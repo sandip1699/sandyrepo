@@ -2,6 +2,7 @@
 /**
  * theme functions and definitions
  *
+ */
 ?>
 
 <?php
