@@ -2,7 +2,7 @@
 /**
  * theme functions and definitions
  *
-
+?>
 // Before VC Init
 add_action( 'vc_before_init', 'vc_before_init_actions' );
  
