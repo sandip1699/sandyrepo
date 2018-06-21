@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 21, 2018, 9:27:22 AM
+    Author     : Sandip
+*/
+
+
+.portfolioFilter { display: inline-block; width: 100%; text-align: center; margin: 0 0 10px 0; }
+.portfolioFilter a { padding: 10px; display: inline-block; width: auto; text-align: center; color: #ffffff; line-height: normal; height: auto; }
+.portfolioFilter a.current, .portfolioFilter a:hover { color: #0092D0; }
+.isotope-item { z-index: 2; }
+.isotope-hidden.isotope-item { pointer-events: none; z-index: 1; }
+.isotope, .isotope .isotope-item { -webkit-transition-duration: 0.8s; -moz-transition-duration: 0.8s; transition-duration: 0.8s; }
+.isotope { -webkit-transition-property: height, width; -moz-transition-property: height, width; transition-property: height, width; }
+.isotope .isotope-item { -webkit-transition-property: -webkit-transform, opacity; -moz-transition-property: -moz-transform, opacity; transition-property: transform, opacity; }
+.overflow-hidden { overflow: hidden; }
+.isotope-item { margin-top: 30px; margin-bottom: 0px; }
+.isotope-item img { width: 100%; }
+.gallery_section { position: relative; display: block; width: 100%; }
+.filter_row { list-style: none; }
+.filter_row li { float: left; }
+.filter_row li a { cursor: pointer; border: 1px solid #ddd; margin-right: 11px; }
+.filter_row li a.current { border-color: #0092D0; }
+.gallery-title { position: relative; bottom: 0px; width: 100%; left: 0px; background: #33393F; color: #ffffff; padding: 15px; font-weight: 600; font-size: 18px; transition: all 0.3s ease 0s; }
+/*.gallery_section:hover .gallery-title {
+    visibility: visible;
+}*/
+.gallery-title a:hover { text-decoration: none; }
+.gallery-title a, .sl-close, .sl-prev, .sl-next { color: #fff !important; z-index: 1315 !important; }
+.sl-overlay { background-color: #000 !important; z-index: 1206 !important; }
+.more-outer { display: inline-block; width: 100%; margin: 55px 0 0 0; text-align: center; }
