@@ -251,7 +251,7 @@ function unique_custom_post(){
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
-        'menu_icon'          => 'dashicons-admin-appearance',
+        'menu_icon'          => 'dashicons-format-gallery',
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'portfolio-item' ),
 		'has_archive'        => true,

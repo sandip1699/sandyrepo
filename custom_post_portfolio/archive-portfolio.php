@@ -15,14 +15,13 @@ get_header();
 
 
     <div class="portfolioFilter">
-        <ul class="row filter_row">
+        <ul class="row filter_row portfolio-category">
             <li> <a class="filter-all">All</a> </li>
             <?php
             $termsfilter = get_terms([
                 'taxonomy' => 'portfolio_cat',
                 'hide_empty' => false,
             ]);
-            
             ?>
             <?php
             foreach ($termsfilter as $term) {
@@ -50,24 +49,28 @@ get_header();
                         $post_thumbnail_url = wp_get_attachment_url($post_thumbnail_id);
                         ?>
                         <a href="<?php echo $post_thumbnail_url; ?>">
-                        <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) : ?>
+                            <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) : ?>
 
-                            <?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?>
+                                <?php echo get_the_post_thumbnail($post->ID, 'medium'); ?>
 
-                        <?php endif; ?>
+                            <?php endif; ?>
                         </a>
-                        
-                        <div class="gallery-title"> <a href="<?php echo $post_thumbnail_url; ?>"> <?php echo get_the_title(); ?> </a></div>
+
+                        <div class="izotop_hide"> <a href="<?php echo $post_thumbnail_url; ?>"> 
+                                <h3><?php echo get_the_title(); ?></h3> 
+                                <span> <?php echo $term->name; ?></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <?php $count++; ?>
-            <?php
+                <?php
             endwhile;
         endif;
         ?>
     </div>
-<?php wp_reset_query(); ?>
+    <?php wp_reset_query(); ?>
 
 </div>
 
