@@ -69,7 +69,7 @@ add image size thumbnail
 <? php add_image_size( 'wordpress-thumbnail', 200, 200, array( 'center', 'center' ) ); ?>
 	Create Custom Post
 
-
+<?php
 add_action('init', 'project_custom_init_Blog');  
 
 function project_custom_init_Blog()
