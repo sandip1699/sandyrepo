@@ -197,3 +197,82 @@ function addmyScript() {
 </script>
 <?php 
 }
+
+function excerpt($limit) {
+      $excerpt = explode(' ', get_the_excerpt(), $limit);
+
+      if (count($excerpt) >= $limit) {
+          array_pop($excerpt);
+          $excerpt = implode(" ", $excerpt) . '...';
+      } else {
+          $excerpt = implode(" ", $excerpt);
+      }
+
+      $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+
+      return $excerpt;
+}
+
+function content($limit) {
+    $content = explode(' ', get_the_content(), $limit);
+
+    if (count($content) >= $limit) {
+        array_pop($content);
+        $content = implode(" ", $content) . '...';
+    } else {
+        $content = implode(" ", $content);
+    }
+
+    $content = preg_replace('/\[.+\]/','', $content);
+    $content = apply_filters('the_content', $content); 
+    $content = str_replace(']]>', ']]&gt;', $content);
+
+    return $content;
+}
+
+then in your template code you just use..
+
+<?php echo excerpt(25); ?>
+
+/* Wordpress Loop  */
+<?php
+                    $args = array(
+                        'post_type' => 'post'
+                    );
+
+                    $post_query = new WP_Query($args);
+                    if ($post_query->have_posts()) {
+                        while ($post_query->have_posts()) {
+                            $post_query->the_post();
+                            ?>
+                            <div class="card news-section">
+                                <a href="<?php the_permalink() ?>">
+                                    <?php if (has_post_thumbnail($post->ID)): ?>
+                                        <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'single-post-thumbnail'); ?>
+                                        <img class="thumbnail_img" src="<?php echo $image[0]; ?>">
+                                    <?php endif; ?>
+                                    <div class="data">
+                                        <h3><?php the_title(); ?></h3>
+                                        <p class="time"><?php the_date(); ?>  |  <?php the_author(); ?></p>
+                                        <p><?php echo excerpt(25); ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                           
+                            <?php
+                        }
+                    }
+                    ?>
+/* thumbnail Attachedment url */
+<?php
+$post_thumbnail_id = get_post_thumbnail_id($post->ID);
+$post_thumbnail_url = wp_get_attachment_url($post_thumbnail_id);
+?>
+<a href="<?php echo $post_thumbnail_url; ?>">
+<?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) : ?>
+
+	<?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?>
+
+<?php endif; ?>
+</a>
+<a href="<?php echo $post_thumbnail_url; ?>">
