@@ -276,3 +276,15 @@ $post_thumbnail_url = wp_get_attachment_url($post_thumbnail_id);
 <?php endif; ?>
 </a>
 <a href="<?php echo $post_thumbnail_url; ?>">
+
+/* create custom menu location */
+function wpb_custom_new_menu() {
+  register_nav_menus(
+    array(
+      'topbar-menu' => __( 'Topbar Menu' ),
+      'footer-menu' => __( 'Footer Menu' )
+    )
+  );
+}
+add_action( 'init', 'wpb_custom_new_menu' );
+
