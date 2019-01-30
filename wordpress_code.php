@@ -288,3 +288,10 @@ function wpb_custom_new_menu() {
 }
 add_action( 'init', 'wpb_custom_new_menu' );
 
+// Custom Thumbnail size 
+add_image_size( 'product-thumbnail', 300, 300, true );
+	
+<?php echo get_the_post_thumbnail( $product->get_ID(), 'product-thumbnail' ); ?>
+	
+	
+
